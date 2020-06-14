@@ -8,5 +8,3 @@ project: cadb0093.cpp
 
 clean:
 	rm $(TARGETS)
-	rm *.csv
-	rm output.txt
