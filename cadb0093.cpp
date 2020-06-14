@@ -227,11 +227,16 @@ Answer find_contour(Operation operations){
             a++;
         }
     }
-    cout<<answer.max_x<<" "<<answer.max_y<<" "<<answer.min_x<<" "<<answer.min_y<<endl;
+    // cout<<answer.max_x<<" "<<answer.max_y<<" "<<answer.min_x<<" "<<answer.min_y<<endl;
     return answer;
 }
 
 int main(int argc, char *argv[]){
+    if(argc < 3){
+        cerr<<"Please enter correct args: ./cadb0092 <input file> <output file>\n";
+        exit(1);
+    }
+
     vector<Operation> operations;
     read_file(argv[1], operations);
     //csv_operation(operations);
@@ -242,12 +247,12 @@ int main(int argc, char *argv[]){
         temp = find_contour(operations[i]);
         temp.max_x += operations[i].expand;
         temp.max_y += operations[i].expand;
-        temp.min_x += operations[i].expand;
-        temp.min_y += operations[i].expand;
+        temp.min_x -= operations[i].expand;
+        temp.min_y -= operations[i].expand;
         answers.push_back(temp);
     }
     ofstream output;
-    output.open("output.txt");
+    output.open(argv[2]);
     output<<"Operation";
     for(int i=0 ; i<operations.size() ; i++){
         output<<","<<operations[i].name;
