@@ -1,10 +1,11 @@
-CC:=g++
-TARGETS=project
+CC := g++
+TARGETS = cadb0093
 
 all: $(TARGETS)	
 
-project: project.cpp 
-	$(CC) -o project $^
+project: cadb0093.cpp 
+	$(CC) -o cadb0093 $^
 
 clean:
 	rm $(TARGETS)
+	rm *.csv
